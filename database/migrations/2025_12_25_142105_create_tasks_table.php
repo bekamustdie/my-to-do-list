@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string("title");
-            $table->boolean("completed");
+            $table->date("deadline")->default(null);
+            $table->enum("priority",['low',"medium", 'high'])->default("medium");
+            $table->boolean("completed")->default(false);
             $table->timestamps();
         });
     }
